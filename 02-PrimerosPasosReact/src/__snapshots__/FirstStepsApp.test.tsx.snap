@@ -1,0 +1,184 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Prueba de componente FirstStepsApp > hacer un match con el shanpshot 1`] = `
+<div>
+  <h1>
+    Carrito de compras
+  </h1>
+  <hr />
+  <div>
+    <section
+      style="display: flex; align-items: center; gap: 10px; margin-top: 10px;"
+    >
+      <span
+        style="width: 200px; border: 1px solid black; padding: 10px;"
+      >
+        Nombre del producto 
+        <br />
+        <strong
+          style="color: red;"
+        >
+          Portatil V15 Lenovo
+        </strong>
+        <p>
+          <strong>
+            Estado: 
+            <br />
+            <span
+              style="color: red;"
+            >
+              NO DISPONIBLE
+            </span>
+          </strong>
+        </p>
+        <p>
+          cantidad Disponible: 
+          <strong>
+            0
+          </strong>
+        </p>
+      </span>
+      <button>
+        -1
+      </button>
+      <span
+        data-testid="valor"
+      >
+        5
+      </span>
+      <button>
+        +1
+      </button>
+    </section>
+    <section
+      style="display: flex; align-items: center; gap: 10px; margin-top: 10px;"
+    >
+      <span
+        style="width: 200px; border: 1px solid black; padding: 10px;"
+      >
+        Nombre del producto 
+        <br />
+        <strong
+          style="color: green;"
+        >
+          Consola Nintendo DS
+        </strong>
+        <p>
+          <strong>
+            Estado: 
+            <br />
+            <span
+              style="color: green;"
+            >
+              DISPONIBLE
+            </span>
+          </strong>
+        </p>
+        <p>
+          cantidad Disponible: 
+          <strong>
+            10
+          </strong>
+        </p>
+      </span>
+      <button>
+        -1
+      </button>
+      <span
+        data-testid="valor"
+      >
+        5
+      </span>
+      <button>
+        +1
+      </button>
+    </section>
+    <section
+      style="display: flex; align-items: center; gap: 10px; margin-top: 10px;"
+    >
+      <span
+        style="width: 200px; border: 1px solid black; padding: 10px;"
+      >
+        Nombre del producto 
+        <br />
+        <strong
+          style="color: red;"
+        >
+          Consola Nintendo 3DS
+        </strong>
+        <p>
+          <strong>
+            Estado: 
+            <br />
+            <span
+              style="color: red;"
+            >
+              NO DISPONIBLE
+            </span>
+          </strong>
+        </p>
+        <p>
+          cantidad Disponible: 
+          <strong>
+            0
+          </strong>
+        </p>
+      </span>
+      <button>
+        -1
+      </button>
+      <span
+        data-testid="valor"
+      >
+        5
+      </span>
+      <button>
+        +1
+      </button>
+    </section>
+    <section
+      style="display: flex; align-items: center; gap: 10px; margin-top: 10px;"
+    >
+      <span
+        style="width: 200px; border: 1px solid black; padding: 10px;"
+      >
+        Nombre del producto 
+        <br />
+        <strong
+          style="color: green;"
+        >
+          Portatil V15 Lenovo 1660 SUPER 16G-RAM
+        </strong>
+        <p>
+          <strong>
+            Estado: 
+            <br />
+            <span
+              style="color: green;"
+            >
+              DISPONIBLE
+            </span>
+          </strong>
+        </p>
+        <p>
+          cantidad Disponible: 
+          <strong>
+            8
+          </strong>
+        </p>
+      </span>
+      <button>
+        -1
+      </button>
+      <span
+        data-testid="valor"
+      >
+        5
+      </span>
+      <button>
+        +1
+      </button>
+    </section>
+  </div>
+</div>
+`;

@@ -1,0 +1,51 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MyAwesomeApp > Prueba con snapshot 1`] = `
+<div>
+  <div>
+    <h1
+      data-testid="first-name-title"
+    >
+      Edison
+    </h1>
+    <h3>
+      Andres
+    </h3>
+    <h3>
+      Perez
+    </h3>
+    <h3>
+      Martinez
+    </h3>
+    <hr />
+    <p
+      class="mi-clase-favorita"
+    >
+      Zelda,Mario,Metroid,Halo
+    </p>
+    <h2>
+      no activo
+    </h2>
+    <hr />
+    <p>
+      prueba andres
+    </p>
+    <p
+      style="background-color: blue; border-radius: 10px; white-space: pre; padding: 10px; color: white;"
+    >
+      {
+  "nombre": "fernando",
+  "edad": 21,
+  "estadoDeLaEmpresa": true,
+  "herramientas": [
+    "React",
+    "Next"
+  ]
+}
+    </p>
+    <p>
+      sigue en la empresa
+    </p>
+  </div>
+</div>
+`;
