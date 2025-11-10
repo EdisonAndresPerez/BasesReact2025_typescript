@@ -67,3 +67,46 @@ en este caso se puede decir que el useEffect se usa para hacer cambios secundari
   a pesar de que asi funciona correctamente. se recomienda que los efectos sean atomicos y solo hagan una tarea no muchas tareas. 
 
   los efectos una tarea especifica 
+
+
+el useEffect tiene algo llamado la lista de dependencias, dice que cada cuanto queremos disparar el efecto
+
+
+  useEffect(() => {
+  
+  },[]
+
+
+
+  USEREF
+Hook de react que permite guardar valores que no deben provocar re-render 
+conserva el valor anterior    
+
+en el ejemplo de este curso creamos un input con un boton. al momento de darle al boton se guarda algo ( lo que haya escrito ) react no borra eso que escribiste cada vez que el componente se vuelve a renderizar. 
+
+para que sirve?
+si quieres que un input se enfoque automaticamente cuando cargas la pagina 
+import { useRef, useEffect } from "react";
+
+function MiFormulario() {
+  const inputRef = useRef(null); // creamos la "cajita"
+
+  useEffect(() => {
+    inputRef.current.focus(); // accedemos al input y lo enfocamos
+  }, []);
+
+  return <input ref={inputRef} placeholder="Escribe tu nombre" />;
+  useRef crea una “referencia” al input, y con .current accedemos al elemento real del DOM.
+}
+
+
+A veces necesitas guardar algo entre renders, pero no quieres que React vuelva a pintar el componente (como sí pasaría con useState).
+
+=> referencias importantes => inputRef.current?.value
+                              inputRef.current?.select();
+                              inputRef.current?.focus();
+
+
+
+
+CONECTAR MULTIPLES CUSTOMHOOKS ENTRE SI 
