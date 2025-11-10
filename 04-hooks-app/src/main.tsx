@@ -5,23 +5,24 @@ import { createRoot } from "react-dom/client";
 
 //import { PokemonPage } from "./03-exalmples/PokemonPage";
 
-
 import "./index.css";
-import { FocusScreen } from "./04-useRef/FocusScreen";
+//import { FocusScreen } from "./04-useRef/FocusScreen";
 //import { TrafficLight } from "./01-useState/TrafficLight";
 //import { TrafficLightWithEffect } from "./02-useEffect/TrafficLightWithEffect";
 //import { TrafficLightWithEffectWithHook } from "./02-useEffect/TrafficLightWithEffectWithHook";
 
+import { TasksApp } from "./05-useReducer/TaskApp";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     {/*<TrafficLight /> */}
-    {/* <TrafficLightWithEffectWithHook />*/}
+    {/*<TrafficLightWithEffectWithHook />*/}
     {/*<TrafficLightWithEffect />*/}
 
     {/* <PokemonPage/>*/}
+    {/* <FocusScreen/>*/}
 
-  <FocusScreen/>
 
-
+    <TasksApp/>
   </StrictMode>
 );
