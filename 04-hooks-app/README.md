@@ -131,6 +131,142 @@ Condiciones de los reducers
 
 
 
+PATRON REDUCER
+Un reducer es una función pura que siempre debe devolver un nuevo estado.
+Su propósito es resolver un nuevo estado basándose en los argumentos que recibe.
+
+Los argumentos son:
+state: el estado actual.
+action: un objeto que describe qué tipo de cambio queremos realizar.
+
+La acción (action) determina cómo debe cambiar el estado y qué datos se necesitan para hacerlo.
+Generalmente tiene dos propiedades:
+
+type: el tipo de acción (por ejemplo, "ADD_TODO" o "DELETE_TODO").
+payload: el valor o argumento adicional que usa la acción para actualizar el estado.
+
+Flujo del reducer:
+Se define un estado inicial.
+Ocurre una acción (por ejemplo, el usuario agrega una tarea).
+El reducer evalúa el tipo de acción.
+Devuelve un nuevo estado actualizado.
+React actualiza el componente con ese nuevo estado.
+
+Ejemplo mental:
+
+El reducer es como un juez:
+recibe el estado actual (los hechos),
+la acción (el argumento del abogado),
+y devuelve un nuevo veredicto (el nuevo estado). ⚖️
+
+primer patron llamado => patron anoptico
+
+usamos el switch para revisar el tipo de accion ( action.type) y ejecuta el bloque correspondiente. 
+
+dependiendo de que pidieronn( en este caso anadir, eliminar y marcarTarea ) hare algo distinto con el estado actual de cada uno 
+
+cada case genera un nuevo estado inmutable => inmutable es un estado que no puede cambiar el valor
+
+
+case "ADD_TODO": {
+  const newTodo: Todo = {
+    id: Date.now(),
+    text: action.payload,
+    completed: false,
+  };
+  return {
+    ...state,
+    todos: [...state.todos, newTodo],
+  };
+}
+
+Crea un nuevo objeto newTodo con:
+
+id único (basado en la fecha actual).
+
+text que viene desde action.payload (lo que el usuario escribió).
+
+completed en false (porque está sin terminar).
+
+Retorna un nuevo estado donde:
+
+Se copia todo lo que había (...state).
+
+Se agrega el nuevo todo al final del arreglo todos.
+
+
+
+CONSEJO::Con gusto te ayudaré. Sí, te entiendo totalmente, al principio el useReducer suena más complicado de lo que debería, pero una forma fácil de saber si vale la pena usarlo es cuando ya tienes muchos estados que se empiezan a cruzar, ahí es donde useReducer vale la pena, ya que te hace la vida más sencilla porque concentras todo en un solo reducer y ya así no andas con tantos useState dispersos, igualmente mientras más practiques y vayas avanzando en el curso le vas a agarrar más sentido.
+
+
+
+
+
+DONDE MANEJAR EL LOCALSTORAGE
+ En el componente que usa el reducer (con useEffect)
+
+Ahí sincronizas el estado con el storage como todo un caballero del código:
+
+Conceptualmente:
+
+Cuando cargue la app → lees del storage
+
+Cada vez que cambien los todos → guardas en storage
+
+
+✅ Métodos principales del objeto Storage
+
+Estos son los que sí o sí debes conocer:
+
+🔹 Guardar datos
+localStorage.setItem('clave', 'valor');
+
+🔹 Obtener datos
+localStorage.getItem('clave');
+
+🔹 Eliminar un dato específico
+localStorage.removeItem('clave');
+
+🔹 Limpiar TODO el storage
+localStorage.clear();
+
+🔹 Obtener clave por índice
+localStorage.key(index);
+
+🔹 Cantidad de elementos almacenados
+localStorage.length;
+
+
+Diferencia entre los tipos de Storage
+
+🟢 localStorage
+
+Persistente
+
+No se elimina al cerrar el navegador
+
+Ideal para: tareas, sesión básica, configuración
+
+🔵 sessionStorage
+
+Se borra al cerrar la pestaña
+
+Solo vive en esa sesión
+
+Si son pocos datos → localStorage
+
+Si es sesión temporal → sessionStorage
+
+Si es arquitectura seria → IndexedDB
+
+
+
+para poder mejorar nuestros datos guardados en un localStorage, Y que no manipulen esos datos gente con algo de conocimiento. podemos usar un VALIADOR O ESQUEMA 
+
+en este caso vamos a usar zod https://zod.dev/
+
+
+
 
 
 

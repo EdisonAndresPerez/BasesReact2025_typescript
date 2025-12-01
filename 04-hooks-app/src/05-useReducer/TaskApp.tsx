@@ -1,40 +1,71 @@
-import { useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
+
+import { es } from "date-fns/locale";
+import { format } from "date-fns";
 
 import { Plus, Trash2, Check } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getTaskInitialState, taskReducer } from "./reducer/tasksReducer";
 
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+//interface Todo {
+//  id: number;
+//  text: string;
+//  completed: boolean;
+//}
 
 export const TasksApp = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
+  //const [todos, setTodos] = useState<Todo[]>([]);
+  const [state, dispatch] = useReducer(taskReducer, getTaskInitialState());
+
+  useEffect(() => {
+    localStorage.setItem("tasks-state", JSON.stringify(state));
+    console.log({ state });
+  }, [state]);
+
   const [inputValue, setInputValue] = useState("");
 
   const addTodo = () => {
-    console.log("Agregar tarea", inputValue);
+    if (inputValue.length === 0) return;
+    dispatch({ type: "ADD_TODO", payload: inputValue });
+    setInputValue("");
+
+    //const newTodo: Todo = {
+    //  id: Date.now(),
+    //  text: inputValue.trim(),
+    //  completed: false,
+    //};
+
+    //setTodos([...todos, newTodo]);
   };
 
   const toggleTodo = (id: number) => {
-    console.log("Cambiar de true a false", id);
+    dispatch({ type: "TOGGLE_TODO", payload: id });
   };
 
   const deleteTodo = (id: number) => {
-    console.log("Eliminar tarea", id);
+    dispatch({ type: "DELETE_TODO", payload: id });
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    console.log("Presiono enter");
+    if (e.key === "Enter") {
+      addTodo();
+      console.log("le diste enter al input");
+    }
   };
 
-  const completedCount = todos.filter((todo) => todo.completed).length;
-  const totalCount = todos.length;
+  const { todos, length: totalCount, todoCompleted: completedCount } = state;
+
+  //tareas completadas
+  //const completedCount = todos.filter((todo) => todo.completed).length;
+  //total de notas
+  //const totalCount = todos.length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
@@ -45,8 +76,8 @@ export const TasksApp = () => {
           </h1>
           <p className="text-slate-600">
             Lista de tareas creada por{" "}
-            <strong>Edison Andres Perez Martinez </strong> 
-             en este proyecto pondremos en practica uno de los hooks mas
+            <strong>Edison Andres Perez Martinez </strong>
+            en este proyecto pondremos en practica uno de los hooks mas
             complejos... <strong>useReducer</strong> <br />
             <span className="block text-right">
               <strong className="text-purple-700">{"{Dev/Talles}"}</strong>
@@ -74,34 +105,54 @@ export const TasksApp = () => {
           </CardContent>
         </Card>
 
-        {totalCount > 0 && (
-          <Card className="mb-6 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg font-semibold text-slate-700">
-                Progreso
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <div className="flex items-center justify-between text-sm text-slate-600 mb-2">
-                <span>
-                  {completedCount} de {totalCount} completadas
-                </span>
-                <span>{Math.round((completedCount / totalCount) * 100)}%</span>
-              </div>
-              <div className="w-full bg-slate-200 rounded-full h-2">
-                <div
-                  className="bg-gradient-to-r from-green-400 to-green-500 h-2 rounded-full transition-all duration-300 ease-out"
-                  style={{ width: `${(completedCount / totalCount) * 100}%` }}
-                />
-              </div>
-            </CardContent>
-          </Card>
-        )}
+        <div className="flex flex-col md:flex-row items-start gap-2 w-full">
+          {totalCount > 0 && (
+            <Card className="flex-1 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg font-semibold text-slate-700">
+                  Progreso
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <div className="flex items-center justify-between text-sm text-slate-600 mb-2">
+                  <span>
+                    {completedCount} de {totalCount} completadas
+                  </span>
+                  <span>
+                    {Math.round((completedCount / totalCount) * 100)}%
+                  </span>
+                </div>
+                <div className="w-full bg-slate-200 rounded-full h-2">
+                  <div
+                    className="bg-gradient-to-r from-green-400 to-green-500 h-2 rounded-full transition-all duration-300 ease-out"
+                    style={{ width: `${(completedCount / totalCount) * 100}%` }}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Wrapper del calendario */}
+          <div className="w-full md:w-72 flex gap-10 justify-center md:justify-end self-start mb-6">
+            <div className="w-full md:w-72">
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={setDate}
+                locale={es}
+                className="w-full rounded-lg border bg-white/90 backdrop-blur-sm shadow-lg p-2 relative z-20"
+              />
+            </div>
+          </div>
+        </div>
 
         <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-lg font-semibold text-slate-700">
-              Tareas
+              Tareas del día{" "}
+              {date
+                ? format(date, "d 'de' MMMM 'de' yyyy", { locale: es })
+                : "—"}
             </CardTitle>
           </CardHeader>
           <CardContent>

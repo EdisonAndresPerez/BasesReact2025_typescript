@@ -19,7 +19,7 @@ export const GifsApp = () => {
             En este proyecto pondremos en práctica el patrón{" "}
             <strong>debouncer</strong> <br />
             <span>
-              <strong>{'{Dev/Talles}'}</strong>
+              <strong className="devTalles">{"{Dev/Talles}"}</strong>
             </span>
           </>
         }

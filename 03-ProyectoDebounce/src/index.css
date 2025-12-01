@@ -157,3 +157,9 @@ h1 {
     gap: 40px;
   }
 }
+
+.devTalles {
+  display: block; 
+  text-align: right; 
+  color: #7e22ce;
+}
