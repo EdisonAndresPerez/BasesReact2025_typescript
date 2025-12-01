@@ -2,7 +2,7 @@
 // Es necesario componentes de Shadcn/ui
 // https://ui.shadcn.com/docs/installation/vite
 
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -73,6 +73,11 @@ export const ScrambleWords = () => {
   const handleGuessSubmit = (e: React.FormEvent) => {
     // Evita que el formulario recargue la página
     e.preventDefault();
+
+    dispatch({
+      type: 'CHECK_ANSWER'
+    })
+
 
     // Compara la palabra escrita con la correcta
     // trim() elimina espacios extras, toLowerCase evita errores por mayúsculas
@@ -251,9 +256,12 @@ export const ScrambleWords = () => {
                     id="guess"
                     type="text"
                     value={guess}
-                    onChange={(e) =>
-                      setGuess(e.target.value.toUpperCase().trim())
-                    }
+                    onChange={(e) =>{
+                      dispatch({
+                        type: 'SET_GUESS',
+                        payload: e.target.value,
+                      })
+                    }}
                     placeholder="Ingresa tu palabra..."
                     className="text-center text-lg font-semibold h-12 border-2 border-indigo-200 focus:border-indigo-500 transition-colors"
                     maxLength={scrambledWord.length}

@@ -266,6 +266,57 @@ para poder mejorar nuestros datos guardados en un localStorage, Y que no manipul
 en este caso vamos a usar zod https://zod.dev/
 
 
+------------------------
+ESTABLECER ACCIONES EN MI REDUCER
+
+en este caso la primera accion sera el poder ingresar mi palabra. ese sera la primera accion que pondremos en nuestro reducer type ScrambleWordsAction.
+
+lo declaramos en el reducer : 
+
+export type ScrambleWordsAction =
+  | { type: 'SET_GUESS', payload: string }
+  | { type: "NO_TENGO_IDEA_2" }
+  | { type: "NO_TENGO_IDEA_3" };
+
+export const scrambleWordsReducer = (
+  state: ScrambleWordsState,
+  action: ScrambleWordsAction
+) => {
+  switch (action.type) {
+    case "SET_GUESS":
+      return {
+        ...state,
+        guess: action.payload.trim().toUpperCase()
+      };
+
+    default:
+      return state;
+  }
+};
+
+
+se utiliza : 
+
+             <Input
+                    id="guess"
+                    type="text"
+                    value={guess}
+                    onChange={(e) =>{
+                      dispatch({
+                        type: 'SET_GUESS',
+                        payload: e.target.value,
+                      })
+                    }}
+                    placeholder="Ingresa tu palabra..."
+                    className="text-center text-lg font-semibold h-12 border-2 border-indigo-200 focus:border-indigo-500 transition-colors"
+                    maxLength={scrambledWord.length}
+                    disabled={isGameOver}
+                  />
+
+
+
+
+
 
 
 

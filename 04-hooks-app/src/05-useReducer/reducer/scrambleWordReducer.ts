@@ -9,7 +9,7 @@ export interface ScrambleWordsState {
   maxSkips: number;
   isGameOver: boolean;
   scrambledWord: string;
-  totalWord : number;
+  totalWord: number;
 }
 
 export type ScramleWordsAction = { type: "NO_TENGO_IDEA" };
@@ -59,22 +59,49 @@ export const getInitialState = (): ScrambleWordsState => {
     maxAllowErrors: 3,
     skipCounter: 0,
     maxSkips: 3,
-    insGameOver: false,
-    totalWord: shuffledWords.length
+    isGameOver: false,
+    totalWord: shuffledWords.length,
   };
 };
 
 export type ScrambleWordsAction =
-  | { type: "NO_TENGO_IDEA_1" }
-  | { type: "NO_TENGO_IDEA_2" }
-  | { type: "NO_TENGO_IDEA_3" }
-  | { type: "NO_TENGO_IDEA_4" };
+  | { type: "SET_GUESS"; payload: string }
+  | { type: "CHECK_ANSWER" }
+  | { type: "NO_TENGO_IDEA_3" };
 
 export const scrambleWordsReducer = (
   state: ScrambleWordsState,
-  action: ScramleWordsAction
-) => {
+  action: ScrambleWordsAction
+): ScrambleWordsState => {
   switch (action.type) {
+    case "SET_GUESS":
+      return {
+        ...state,
+        guess: action.payload.trim().toUpperCase(),
+      };
+
+    case "CHECK_ANSWER": {
+      if (state.currentWord === state.guess) {
+        const newWords = state.words.slice(1);
+
+        return {
+          ...state,
+          words: newWords,
+          points: state.points + 1,
+          guess: "",
+          currentWord: newWords[0],
+          scrambledWord: scrambleWord(newWords[0]),
+        };
+      }
+
+      return {
+        ...state,
+        guess: "",
+        errorCounter: state.errorCounter + 1,
+        isGameOver: state.errorCounter + 1 >= state.maxAllowErrors,
+      };
+    }
+
     default:
       return state;
   }
