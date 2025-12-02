@@ -67,7 +67,8 @@ export const getInitialState = (): ScrambleWordsState => {
 export type ScrambleWordsAction =
   | { type: "SET_GUESS"; payload: string }
   | { type: "CHECK_ANSWER" }
-  | { type: "NO_TENGO_IDEA_3" };
+  | { type: "SKIP_WORD" }
+  | { type: "START_NEW_GAME" };
 
 export const scrambleWordsReducer = (
   state: ScrambleWordsState,
@@ -101,6 +102,44 @@ export const scrambleWordsReducer = (
         isGameOver: state.errorCounter + 1 >= state.maxAllowErrors,
       };
     }
+
+    case "SKIP_WORD": {
+      if (state.skipCounter >= state.maxSkips) {
+        return state;
+      }
+
+      const indiceActual = state.words.indexOf(state.currentWord);
+      const siguienteIndice = indiceActual + 1;
+      const siguientePalabra = state.words[siguienteIndice];
+
+      // Si no hay más palabras → terminar juego
+      if (!siguientePalabra) {
+        return {
+          ...state,
+          skipCounter: state.skipCounter + 1,
+          isGameOver: true,
+        };
+      }
+
+      // Si sí hay siguiente palabra:
+      return {
+        ...state,
+        skipCounter: state.skipCounter + 1,
+        currentWord: siguientePalabra,
+        scrambledWord: scrambleWord(siguientePalabra),
+        guess: "",
+      };
+    }
+
+
+    case "START_NEW_GAME" : {
+
+      return getInitialState();
+      
+    }
+    
+
+
 
     default:
       return state;

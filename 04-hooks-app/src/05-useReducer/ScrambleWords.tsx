@@ -133,6 +133,11 @@ export const ScrambleWords = () => {
   // FUNCIÓN: SALTAR PALABRA
   // ------------------------------------
   const handleSkip = () => {
+
+    dispatch({
+      type: 'SKIP_WORD'
+    })
+
     // Valida si aún tiene saltos disponibles
     //  if (skipCounter < maxSkips) {
     // Incrementa el contador de skips
@@ -158,6 +163,13 @@ export const ScrambleWords = () => {
   // FUNCIÓN: REINICIAR JUEGO
   // ------------------------------------
   const handlePlayAgain = () => {
+
+    dispatch({
+      type:'START_NEW_GAME'
+    })
+
+
+
     // Nuevo orden de palabras
     //const nuevasMezcladas = shuffleArray(GAME_WORDS);
     //setWords(nuevasMezcladas);
