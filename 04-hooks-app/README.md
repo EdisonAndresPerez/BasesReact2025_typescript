@@ -315,6 +315,56 @@ se utiliza :
 
 
 
+---------------
+SECCION 11 
+Puntualmente veremos:
+
+Memorización
+Hooks de memorización como:
+useMemo
+useCallback
+useOptimistic para hacer actualizaciones en pantalla rápidas
+useTransaction para evitar bloqueos de UI
+Simular fallos en posteos optimistas para hacer reversiones
+Nueva api Use
+Componente Suspense
+Y más
+
+MEMORIZACION
+La memorizacion en react es un tecnica para evitar renders innecesesarios y optimizart el rendimiento. 
+
+React.memo()
+memo() 
+memoriza un componente completo. si sus props no cambian, no se vuelven a renderizar 
+
+podemos usarlo cuando:
+cuando el componente recibe props que no cambian con frecuencia.
+cuando el componente es "pesado" (muchos calculos o render caro)
+
+no sirve para:
+evitar renders si el estado interno cambia.
+evitar renders si las props son objetos creados en cada render 
+
+
+antes de usar el useCallback en este ejercicio podemos ver que, aunque hemos envuelto los componentes en un memo sigue renderizando los MyTitle y MySubTitle.
+
+aunque no cambie el subTitle, cambia la referencia de la funcion handleMyApiCall.
+
+entonces, cada vez que el componente padre (MemoHook) se renderiza, se crea una nueva funcion. en este caso vuelve a salir en consola el mensaje. 
+
+entonces. para que la funcion callmyapi mantenga la misma referencia entre renders, debemos memorizarlo. 
+
+USECALLBACK
+usamos el usecallback envolvemos la funcion entre ()
+
+
+USEMEMO
+usememo sirve para memorizar valores de calculo
+
+
+
+
+
 
 
 
