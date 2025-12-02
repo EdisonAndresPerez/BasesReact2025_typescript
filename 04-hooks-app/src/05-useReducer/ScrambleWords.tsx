@@ -2,7 +2,7 @@
 // Es necesario componentes de Shadcn/ui
 // https://ui.shadcn.com/docs/installation/vite
 
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -36,6 +36,16 @@ export const ScrambleWords = () => {
     words,
     totalWord,
   } = state;
+
+useEffect(() => {
+  if (points > 0) {
+    confetti({
+      particleCount: 100,
+      spread: 120,
+      origin: { y: 0.6 },
+    });
+  }
+}, [points]);
 
   // Array de palabras mezcladas desde el inicio
   //const [words, setWords] = useState(shuffleArray(GAME_WORDS));
@@ -75,9 +85,9 @@ export const ScrambleWords = () => {
     e.preventDefault();
 
     dispatch({
-      type: 'CHECK_ANSWER'
-    })
-
+      type: "CHECK_ANSWER",
+    });
+    dispatch(confetti)
 
     // Compara la palabra escrita con la correcta
     // trim() elimina espacios extras, toLowerCase evita errores por mayúsculas
@@ -133,10 +143,9 @@ export const ScrambleWords = () => {
   // FUNCIÓN: SALTAR PALABRA
   // ------------------------------------
   const handleSkip = () => {
-
     dispatch({
-      type: 'SKIP_WORD'
-    })
+      type: "SKIP_WORD",
+    });
 
     // Valida si aún tiene saltos disponibles
     //  if (skipCounter < maxSkips) {
@@ -163,12 +172,9 @@ export const ScrambleWords = () => {
   // FUNCIÓN: REINICIAR JUEGO
   // ------------------------------------
   const handlePlayAgain = () => {
-
     dispatch({
-      type:'START_NEW_GAME'
-    })
-
-
+      type: "START_NEW_GAME",
+    });
 
     // Nuevo orden de palabras
     //const nuevasMezcladas = shuffleArray(GAME_WORDS);
@@ -268,11 +274,11 @@ export const ScrambleWords = () => {
                     id="guess"
                     type="text"
                     value={guess}
-                    onChange={(e) =>{
+                    onChange={(e) => {
                       dispatch({
-                        type: 'SET_GUESS',
+                        type: "SET_GUESS",
                         payload: e.target.value,
-                      })
+                      });
                     }}
                     placeholder="Ingresa tu palabra..."
                     className="text-center text-lg font-semibold h-12 border-2 border-indigo-200 focus:border-indigo-500 transition-colors"
