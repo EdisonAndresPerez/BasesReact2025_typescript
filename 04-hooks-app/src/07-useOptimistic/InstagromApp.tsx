@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 interface Comment {
   id: number;
@@ -8,12 +8,25 @@ interface Comment {
 
 export const InstagromApp = () => {
   const [comments, setComments] = useState<Comment[]>([
-    { id: 1, text: '¡Gran foto!' },
-    { id: 2, text: 'Me encanta 🧡' },
+    { id: 1, text: "¡Gran foto!" },
+    { id: 2, text: "Me encanta 🧡" },
   ]);
 
-  const handleAddComment = async () => {
-    console.log('Nuevo comentario');
+  const handleAddComment = async (formData: FormData) => {
+
+    const textInput = formData.get("post-message") as string;
+    console.log("Nuevo comentario", textInput);
+
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log("mensaje guardado");
+
+    setComments((prev) => [
+      ...prev,
+      {
+        id: new Date().getTime(),
+        text: textInput,
+      },
+    ]);
   };
 
   return (
@@ -47,7 +60,7 @@ export const InstagromApp = () => {
 
       {/* Formulario de comentarios */}
       <form
-        action={handleAddComment}
+        action={(event) => handleAddComment(event)}
         className="flex flex-col items-center justify-center bg-gray-300 w-[500px] rounded-b-3xl p-4"
       >
         <input
@@ -68,4 +81,3 @@ export const InstagromApp = () => {
     </div>
   );
 };
-
