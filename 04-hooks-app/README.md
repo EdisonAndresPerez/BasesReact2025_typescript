@@ -361,6 +361,42 @@ usamos el usecallback envolvemos la funcion entre ()
 USEMEMO
 usememo sirve para memorizar valores de calculo
 
+USEOPTIMISTIC => uno de los nuevos hooks
+latencia hacia el servidor
+esta pensando para manejar actualizaciones optimistas.
+es decir: 
+=> mostrar cambios como si ya hubieran ocurrido. incluso antes de que el servidor responsa. ( como un chat, una publicacion )
+
+=> si el servidor confirma todo bien 
+
+=> si el servidor falla revertimos o mostramos error
+
+la idea es mejorar la UX, haciendo que la app se sienta rapida y fluida, sin esperar la latencia de la API
+
+
+CUANDO USAR USEOPTIMISTIC 
+
+cuando enviamos informacion y quiero actualizar UI inmediatamente 
+ejemplos:
+-enviar comentarios
+-los mostramos enseguida como si ya estuviera guardado
+-si falla, lo sacamos o marcamos como error
+
+netflix, youtube, twitter todos hacen eso. 
+
+cuando eliminamos algo y no queremos la espera del servidor
+-borrar un producto
+
+
+cuando actualizamos un contador
+-like
+-votos
+-reacciones
+
+subimos el contador IMMEDIATAMENTE sin esperar al servidor.
+
+
+
 
 
 
