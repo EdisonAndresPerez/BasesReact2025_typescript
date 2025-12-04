@@ -6,18 +6,21 @@ import { LoginPage } from "../pages/auth/LoginPage";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <AboutPage/>
+    element: <AboutPage />,
   },
   {
     path: "/profile",
-    element: <ProfilePage/>
+    element: <ProfilePage />,
   },
   {
     path: "/login",
-    element: <LoginPage/>
+    element: <LoginPage />,
   },
+  //WildCard route => captura todas las rutas que no coinciden
+  //con ninguna definida previamente y las redirige a donde quiera
+
   {
-    path: '*',
-    element: <Navigate to="/"/>
-  }
+    path: "*",
+    element: <Navigate to="/" />,
+  },
 ]);
