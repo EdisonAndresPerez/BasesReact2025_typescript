@@ -402,7 +402,40 @@ subimos el contador IMMEDIATAMENTE sin esperar al servidor.
 
 
 
+--------------------
+SPA => SINGLE PAGES APPLICATION 
 
+aplicacion de una sola pagina. 
+
+es un tipo de aplicacion web donde solo se carga de una pagina HTML inicial. el resto de vistas se actualizan dinamicamente desde javascript. sin recargar toda la pagina 
+-facebook
+-gmail
+-twitter
+-notion
+No se recarga la página completa cada que navegas… solo cambian las partes necesarias.
+
+¿Qué significa realmente “Single Page”?
+Tu app arranca en index.html.
+
+A partir de ahí, React (o Vue, Angular) toma el control de la interfaz.
+
+Todo el routing lo maneja el frontend.
+
+Los cambios de vista son instantáneos porque no hay recargas del navegador.
+
+¿Para qué sirve una SPA?
+
+Velocidad y fluidez:
+Navegas entre pantallas sin que todo se vuelva a cargar.
+
+Experiencia tipo app móvil:
+Animaciones más suaves, navegación sin tiempos muertos.
+
+Mejor interacción y UI más viva:
+Perfecto para dashboards, apps interactivas, chats, etc.
+
+Carga parcial:
+Solo traes la data necesaria desde la API. No cargas páginas enteras otra vez.
 
 
 

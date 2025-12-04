@@ -10,7 +10,8 @@ import "./index.css";
 //import { MemoHook } from "./06-memos/MemoHook";
 //import { MemoCounter } from "./06-memos/MemoCounter";
 //import { InstagromApp } from "./07-useOptimistic/InstagromApp";
-import { ClientInformation } from "./08-use-suspense/ClientInformation";
+//import { ClientInformation } from "./08-use-suspense/ClientInformation";
+import { ProfessionalApp } from "./09-useContext/ProfessionalApp";
 //import { FocusScreen } from "./04-useRef/FocusScreen";
 //import { TrafficLight } from "./01-useState/TrafficLight";
 //import { TrafficLightWithEffect } from "./02-useEffect/TrafficLightWithEffect";
@@ -36,8 +37,9 @@ createRoot(document.getElementById("root")!).render(
     {/*<MemoHook />*/}
     {/*<MemoCounter/>*/}
     {/*<InstagromApp />*/}
-    <Suspense fallback={<h1>cargando....</h1>}>
+    {/*<Suspense fallback={<h1>cargando....</h1>}>
       <ClientInformation />
-    </Suspense>
+    </Suspense>*/}
+    <ProfessionalApp/>
   </StrictMode>
 );
