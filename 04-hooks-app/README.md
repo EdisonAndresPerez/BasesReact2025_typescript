@@ -437,6 +437,11 @@ Perfecto para dashboards, apps interactivas, chats, etc.
 Carga parcial:
 Solo traes la data necesaria desde la API. No cargas páginas enteras otra vez.
 
+https://reactrouter.com/home
+
+
+se puede manejar como framework - data - declarative
+
 
 
 

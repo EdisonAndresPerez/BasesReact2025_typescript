@@ -1,8 +1,10 @@
+import { RouterProvider } from "react-router";
+import { router } from "./router/app.router";
 
 export const ProfessionalApp = () => {
   return (
-    <div className="bg-gradient flex flex-col">
-        <h1>Profecional App</h1>
+    <div className="bg-gradient">
+      <RouterProvider router={router} />
     </div>
-  )
-}
+  );
+};
