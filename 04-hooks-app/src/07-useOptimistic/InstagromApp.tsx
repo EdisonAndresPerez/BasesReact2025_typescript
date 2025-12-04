@@ -1,4 +1,7 @@
 import { useOptimistic, useState, useTransition } from "react";
+import { toast } from 'sonner'
+
+
 
 interface Comment {
   id: number;
@@ -37,19 +40,31 @@ export const InstagromApp = () => {
     console.log("Nuevo comentario", textInput);
 
     addOptimisticComment(textInput);
-    startTransition( async()  => {
+
+    startTransition(async () => {
       //simulacion de peticion htpp al servidor
       await new Promise((resolve) => setTimeout(resolve, 3000));
+
       console.log("mensaje guardado");
 
-      setComments((prev) => [
-        ...prev,
-        {
-          id: new Date().getTime(),
-          text: textInput,
-        },
-      ]);
+      //setComments((prev) => [
+      //  ...prev,
+      //  {
+      //    id: new Date().getTime(),
+      //    text: textInput,
+      //  },
+      //]);
     });
+    setComments((prev) => prev);
+    toast('Error al agregar comentario', {
+      description: 'Intente nuevamente',
+      duration:10_000,
+      position: 'top-right',
+      action: {
+        label: 'cerrar',
+        onClick: () => toast.dismiss(),
+      },
+    })
   };
 
   return (
@@ -95,7 +110,7 @@ export const InstagromApp = () => {
         />
         <button
           type="submit"
-          disabled={false}
+          disabled={isPending}
           className="bg-blue-500 text-white p-2 rounded-md w-full"
         >
           Enviar
