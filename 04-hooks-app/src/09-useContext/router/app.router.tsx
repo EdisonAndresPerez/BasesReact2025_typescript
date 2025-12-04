@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { AboutPage } from "../pages/about/AboutPage";
 import { ProfilePage } from "../pages/profile/ProfilePage";
 import { LoginPage } from "../pages/auth/LoginPage";
@@ -16,4 +16,8 @@ export const router = createBrowserRouter([
     path: "/login",
     element: <LoginPage/>
   },
+  {
+    path: '*',
+    element: <Navigate to="/"/>
+  }
 ]);
