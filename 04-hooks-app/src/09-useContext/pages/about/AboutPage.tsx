@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export const AboutPage = () => {
   console.log('no se puede recargar la pagina ')
@@ -8,8 +9,8 @@ export const AboutPage = () => {
       <hr />
 
       <div className='flex flex-col gap-2'>
-        <a href="profile">Perfil</a>
-        <a href="login">Iniciar sesion</a>
+        <Link to="profile">Perfil</Link>
+        <Link to="login">Iniciar sesion</Link>
       </div>
 
     </div>
