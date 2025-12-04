@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { Toaster } from "sonner";
 
@@ -7,9 +7,10 @@ import { Toaster } from "sonner";
 //import { PokemonPage } from "./03-exalmples/PokemonPage";
 
 import "./index.css";
-import { MemoHook } from "./06-memos/MemoHook";
-import { MemoCounter } from "./06-memos/MemoCounter";
-import { InstagromApp } from "./07-useOptimistic/InstagromApp";
+//import { MemoHook } from "./06-memos/MemoHook";
+//import { MemoCounter } from "./06-memos/MemoCounter";
+//import { InstagromApp } from "./07-useOptimistic/InstagromApp";
+import { ClientInformation } from "./08-use-suspense/ClientInformation";
 //import { FocusScreen } from "./04-useRef/FocusScreen";
 //import { TrafficLight } from "./01-useState/TrafficLight";
 //import { TrafficLightWithEffect } from "./02-useEffect/TrafficLightWithEffect";
@@ -34,6 +35,9 @@ createRoot(document.getElementById("root")!).render(
 
     {/*<MemoHook />*/}
     {/*<MemoCounter/>*/}
-    <InstagromApp />
+    {/*<InstagromApp />*/}
+    <Suspense fallback={<h1>cargando....</h1>}>
+      <ClientInformation />
+    </Suspense>
   </StrictMode>
 );
