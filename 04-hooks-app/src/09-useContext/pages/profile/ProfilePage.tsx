@@ -12,7 +12,7 @@ export const ProfilePage = () => {
       </pre>
 
       <div className=" flex gap-2">
-        <Link to="/about">
+        <Link to="">
           <Button variant="destructive">Salir</Button>
         </Link>
         <Link to="/about">

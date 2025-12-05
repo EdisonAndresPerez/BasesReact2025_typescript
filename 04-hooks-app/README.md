@@ -454,3 +454,9 @@ export const router = createBrowserRouter([
 usar LINK TO de react router
 
 Un contexto es una pieza que nos permite proveer un comportamiento o estado 
+
+analizar sobre children en react  
+
+HOC=>  Un HOC para el contexto es básicamente una función que envuelve un componente para darle acceso automático a un contexto —sin que tú tengas que escribir useContext dentro del componente cada vez.
+
+Una función que recibe un componente y devuelve un nuevo componente, agregándole funcionalidad extra.
