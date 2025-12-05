@@ -1,5 +1,5 @@
 import { createContext, useState, type PropsWithChildren } from "react";
-import type { User } from "../data/user-mock.data";
+import { users, type User } from "../data/user-mock.data";
 import { LogOut } from "lucide-react";
 
 type AuthStatus = "checking" | "authenticated" | "not-authenticated";
@@ -25,13 +25,23 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<User | null>(null);
 
   const handleLogin = (userId: number) => {
-    console.log({ userId });
-
-    return true;
+    const user = users.find((user) => user.id === userId);
+    if (!user) {
+      console.log(`usuario no existe con ese id ${userId}`);
+      setUser(null);
+      setAuthStatus("not-authenticated");
+      return false;
+    }
+    setUser(user);
+    setAuthStatus("authenticated");
+    //purgamos
+    setUser(null);
   };
 
   const handleLogout = () => {
     console.log("cerrar");
+    setAuthStatus("not-authenticated");
+    return false;
   };
 
   return (
