@@ -465,3 +465,7 @@ Una función que recibe un componente y devuelve un nuevo componente, agregándo
 LA AUTENTICACION DEBE ESTAR EN UN GESTOR DE ESTADO GLOBAL.
 CONTEXT ES LA OPCION MAS COMUN. PERO NO ES LA UNICA.
 ES RECOMENDADO PERO NO OBLIGATORIO 
+
+aprender hacer persistencia 
+
+consumir el contexto se hace con desestructuración 

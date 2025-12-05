@@ -2,27 +2,32 @@ import { userContext } from "@/09-useContext/context/UserContext";
 import { useContext, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
 
 export const LoginPage = () => {
-
-  const {login} = useContext(userContext)
-
-
+  const { login } = useContext(userContext);
 
   const [userId, setUserId] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    const autenticateResult = login(+userId)
-    console.log({autenticateResult})
-
-
-
-
     //detener el comportamiento automatico que tendria un evento en el navegador
     //en este caso evita que el formulario recargue la pagina
     event.preventDefault();
-    console.log({userId});
+    const autenticateResult = login(+userId);
+
+    //si sale un error
+    //podemos usar toast
+    if (!autenticateResult) {
+      toast.error("usuario no encontrado");
+      return;
+    }
+    navigate("/profile");
+
+    console.log({ autenticateResult });
+    console.log({ userId });
   };
 
   return (
