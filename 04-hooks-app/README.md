@@ -460,3 +460,8 @@ analizar sobre children en react
 HOC=>  Un HOC para el contexto es básicamente una función que envuelve un componente para darle acceso automático a un contexto —sin que tú tengas que escribir useContext dentro del componente cada vez.
 
 Una función que recibe un componente y devuelve un nuevo componente, agregándole funcionalidad extra.
+
+
+LA AUTENTICACION DEBE ESTAR EN UN GESTOR DE ESTADO GLOBAL.
+CONTEXT ES LA OPCION MAS COMUN. PERO NO ES LA UNICA.
+ES RECOMENDADO PERO NO OBLIGATORIO 
