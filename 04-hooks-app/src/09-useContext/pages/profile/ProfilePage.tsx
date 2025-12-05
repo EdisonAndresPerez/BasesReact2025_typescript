@@ -3,7 +3,10 @@ import { useContext } from "react";
 import { Link } from "react-router";
 import { userContext } from "@/09-useContext/context/UserContext";
 export const ProfilePage = () => {
-  const { user } = useContext(userContext);
+  const { user, logout } = useContext(userContext);
+
+
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -15,8 +18,9 @@ export const ProfilePage = () => {
       </pre>
 
       <div className=" flex gap-2">
-        <Link to="">
-          <Button variant="destructive">Salir</Button>
+        <Link 
+        to="">
+          <Button onClick={logout} variant="destructive">Salir</Button>
         </Link>
         <Link to="/about">
           <Button variant="ghost">Volver al Inicio</Button>

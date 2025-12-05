@@ -1,4 +1,9 @@
-import { createContext, useEffect, useState, type PropsWithChildren } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  type PropsWithChildren,
+} from "react";
 import { users, type User } from "../data/user-mock.data";
 
 type AuthStatus = "checking" | "authenticated" | "not-authenticated";
@@ -34,24 +39,26 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
     setUser(user);
     setAuthStatus("authenticated");
     //persistencia en el localStorage
-    localStorage.setItem('userId', userId.toString())
+    localStorage.setItem("userId", userId.toString());
     return true;
   };
 
   const handleLogout = () => {
     console.log("cerrar");
+    localStorage.removeItem("userId");
     setAuthStatus("not-authenticated");
-    setUser(null)
+    setUser(null);
   };
 
-
+  //Reconstruyes el usuario al cargar la app
   useEffect(() => {
-    const storageUserId = localStorage.getItem('userId')
-    if(storageUserId ){
+    const storageUserId = localStorage.getItem("userId");
+    if (storageUserId) {
       handleLogin(+storageUserId);
+      return
     }
-  },[])
-
+    handleLogout()
+  }, []);
 
   return (
     <userContext.Provider
