@@ -1,6 +1,5 @@
 import { createContext, useState, type PropsWithChildren } from "react";
 import { users, type User } from "../data/user-mock.data";
-import { LogOut } from "lucide-react";
 
 type AuthStatus = "checking" | "authenticated" | "not-authenticated";
 
@@ -36,6 +35,7 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
     setAuthStatus("authenticated");
     //purgamos
     setUser(null);
+    return true;
   };
 
   const handleLogout = () => {
