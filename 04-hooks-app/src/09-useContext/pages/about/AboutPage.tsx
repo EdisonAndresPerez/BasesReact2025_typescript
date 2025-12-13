@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { userContext } from "@/09-useContext/context/UserContext";
 
 export const AboutPage = () => {
-  const { user } = useContext(userContext);
+  const { isAuthenticatedUser, user } = useContext(userContext);
 
   console.log("no se puede recargar la pagina ");
   return (
@@ -11,14 +11,16 @@ export const AboutPage = () => {
       <h1 className="text-4xl font-bold">Pagina Sobre mi</h1>
       <hr />
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 p-10">
         <Link to="profile" className="hover:text-blue-500 underline text-2xl">
           Perfil
         </Link>
 
-        {user && <span className="text-2xl">Hola, {user.name}</span>}
+        {isAuthenticatedUser && (
+          <span className="text-2xl">Hola, {user.name}</span>
+        )}
 
-        {!user && (
+        {!isAuthenticatedUser && (
           <Link to="login" className="hover:text-blue-500 underline text-2xl">
             Iniciar sesion
           </Link>
