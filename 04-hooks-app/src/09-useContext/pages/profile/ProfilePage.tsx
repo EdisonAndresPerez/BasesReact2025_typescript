@@ -5,9 +5,6 @@ import { userContext } from "@/09-useContext/context/UserContext";
 export const ProfilePage = () => {
   const { user, logout } = useContext(userContext);
 
-
-
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h1 className="text-4xl">Perfil del usuario</h1>
@@ -18,9 +15,20 @@ export const ProfilePage = () => {
       </pre>
 
       <div className=" flex gap-2">
-        <Link 
-        to="">
-          <Button onClick={logout} variant="destructive">Salir</Button>
+        <Link to="">
+          <Button
+            onClick={() => {
+              if (!user) {
+                window.alert("Debe tener un usuario activo");
+                return;
+              }
+
+              logout();
+            }}
+            variant="destructive"
+          >
+            Salir
+          </Button>
         </Link>
         <Link to="/about">
           <Button variant="ghost">Volver al Inicio</Button>
