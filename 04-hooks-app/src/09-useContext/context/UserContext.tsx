@@ -56,9 +56,9 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
     const storageUserId = localStorage.getItem("userId");
     if (storageUserId) {
       handleLogin(+storageUserId);
-      return
+      return;
     }
-    handleLogout()
+    handleLogout();
   }, []);
 
   return (
@@ -67,8 +67,6 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
         isAuthenticated: authStatus,
         //crear un contexto de autenticado para usarlo tambien como contexto
         isAuthenticatedUser: authStatus === "authenticated",
-
-
 
         user: user,
         login: handleLogin,
