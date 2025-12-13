@@ -7,5 +7,5 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <h1>hola</h1>
     <Button>hola de nuevo</Button>
-  </StrictMode>,
+  </StrictMode>
 )
