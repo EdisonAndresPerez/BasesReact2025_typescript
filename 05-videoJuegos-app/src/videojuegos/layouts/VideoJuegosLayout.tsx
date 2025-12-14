@@ -1,21 +1,11 @@
-import { Link, Outlet } from "react-router";
+import { Outlet } from "react-router";
 
 export const VideoJuegosLayout = () => {
-  return <div className=" bg-amber-800">
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-        <li>
-        <Link to="/juegos/1">Video Juego</Link>
-      </li>
-        <li>
-        <Link to="/search">Search</Link>
-      </li>
-        <li>
-        <Link to="/admin">Admin</Link>
-      </li>
-    </ul>
-    <Outlet/>
-  </div>;   
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-blue-50">
+      <div className="max-w-7xl mx-auto p-6">
+        <Outlet/>
+      </div>
+    </div>
+  );
 };
