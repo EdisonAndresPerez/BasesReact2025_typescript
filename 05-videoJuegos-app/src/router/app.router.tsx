@@ -1,10 +1,18 @@
+import { createBrowserRouter } from "react-router";
+
 import AdminLayout from "@/admin/layouts/AdminLayout";
 import { AdminPages } from "@/admin/pages/AdminPages";
 import { VideoJuegosLayout } from "@/videojuegos/layouts/VideoJuegosLayout";
 import { VideoJuegoPage } from "@/videojuegos/pages/game/VideoJuegoPage";
 import { HomePage } from "@/videojuegos/pages/home/HomePage";
-import { SearchPage } from "@/videojuegos/pages/search/SearchPage";
-import { createBrowserRouter } from "react-router";
+//import { SearchPage } from "@/videojuegos/pages/search/SearchPage";
+
+import { lazy } from "react";
+
+
+const SearchPage = lazy(() => import("@/videojuegos/pages/search/SearchPage"));
+
+
 
 export const router = createBrowserRouter([
   {
@@ -35,10 +43,5 @@ export const router = createBrowserRouter([
         element: <AdminPages />,
       },
     ],
-  },
-
-  {
-    path: "/admin",
-    element: <AdminPages />,
   },
 ]);
