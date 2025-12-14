@@ -1,3 +1,4 @@
+import AdminLayout from "@/admin/layouts/AdminLayout";
 import { AdminPages } from "@/admin/pages/AdminPages";
 import { VideoJuegosLayout } from "@/videojuegos/layouts/VideoJuegosLayout";
 import { VideoJuegoPage } from "@/videojuegos/pages/game/VideoJuegoPage";
@@ -21,6 +22,17 @@ export const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchPage />,
+      },
+    ],
+  },
+
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <AdminPages />,
       },
     ],
   },
