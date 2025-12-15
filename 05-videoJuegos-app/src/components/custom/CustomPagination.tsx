@@ -1,11 +1,11 @@
 import { Button } from "../ui/button";
-import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Props {
   totalPages: number;
 }
 
-const totalPagesExample = 5; // Example total pages
+const totalPagesExample = 1 as number; // Example total pages
 
 const CustomPagination = ({ totalPages }: Props) => {
   return (
@@ -16,28 +16,23 @@ const CustomPagination = ({ totalPages }: Props) => {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button variant="outline" size="sm" disabled>
+        <Button    variant="outline" size="sm" disabled={totalPagesExample === 1}>
           <ChevronLeft className="h-4 w-4" />
           Previous
         </Button>
 
         {Array.from({ length: totalPages }).map((_, index) => (
           <Button
-            variant={totalPagesExample == index + 1 ? "default" : "outline"}
+          key={index}
+            variant={totalPagesExample === index + 1 ? "default" : "outline"}
             size="sm"
           >
-            {" "}
-            {index + 1}{" "}
+            {index + 1}
           </Button>
         ))}
 
-        <div className="flex gap-1">
-          <Button variant="ghost" size="sm" disabled>
-            <MoreHorizontal className="h-4 w-4" />
-          </Button>
-        </div>
 
-        <Button variant="outline" size="sm">
+        <Button  disabled={totalPagesExample === totalPages  }  variant="outline" size="sm">
           Next
           <ChevronRight className="h-4 w-4" />
         </Button>
