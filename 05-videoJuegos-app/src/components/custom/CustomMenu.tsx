@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Menubar,
   MenubarContent,
@@ -8,17 +8,17 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { useLocation } from 'react-router'
-
-const {} = useLocation();
 
 const CustomMenu = () => {
+  const { pathname } = useLocation();
+  console.log("Ruta actual:", pathname);
 
-   
+const isActive = (path: string) => pathname === path;
+
   return (
     <Menubar>
       <MenubarMenu>
-        <MenubarTrigger asChild  className="bg-neutral-500 rounded-md p-2">
+        <MenubarTrigger asChild className="bg-neutral-500 rounded-md p-2">
           <Link to="/">Home</Link>
         </MenubarTrigger>
       </MenubarMenu>
