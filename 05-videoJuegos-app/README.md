@@ -14,3 +14,5 @@ Y todo lo relacionado al diseño de la aplicación
 
 --------------------------------------------------
 
+los tabs y la pagination siempre se hacen en componente que vayamos a utilizar en otros lados
+
