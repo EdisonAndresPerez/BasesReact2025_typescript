@@ -19,6 +19,7 @@ export const HomePage = () => {
           title="Video Games Universe"
           description="Discover, explore, and manage your favorite video games"
         />
+      
 
         {/* Stats Dashboard */}
         <StatsVideoGames />
