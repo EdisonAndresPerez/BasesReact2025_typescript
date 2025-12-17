@@ -1,10 +1,11 @@
-import { Heart} from "lucide-react";
+import { Heart } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import CustomJumbotron from "@/components/custom/CustomJumbotron";
 import StatsVideoGames from "@/videojuegos/components/StatsVideoGames";
 import VideoJuegoGrid from "@/videojuegos/components/VideoJuegoGrid";
 import { useState } from "react";
 import CustomPagination from "@/components/custom/CustomPagination";
+import CustomBreadcrumbs from "@/components/custom/CustomBreadcrumbs";
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState<
@@ -19,10 +20,13 @@ export const HomePage = () => {
           title="Video Games Universe"
           description="Discover, explore, and manage your favorite video games"
         />
-      
 
         {/* Stats Dashboard */}
         <StatsVideoGames />
+
+        <div className="bg-yellow-300">
+          <CustomBreadcrumbs />
+        </div>
 
         {/* Tabs */}
         <Tabs value={activeTab} className="mb-8">
@@ -70,7 +74,7 @@ export const HomePage = () => {
         {/* Game Grid */}
 
         {/* Pagination */}
-        <CustomPagination totalPages={7}/>
+        <CustomPagination totalPages={7} />
       </>
     </>
   );

@@ -1,30 +1,26 @@
-import { Link, useLocation } from "react-router-dom";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+import { NavLink } from "react-router-dom";
+import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 
 const CustomMenu = () => {
-  const { pathname } = useLocation();
-  console.log("Ruta actual:", pathname);
-
-const isActive = (path: string) => pathname === path;
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `rounded-md p-2 transition ${
+      isActive ? "bg-neutral-500 text-white" : "hover:bg-neutral-200"
+    }`;
 
   return (
     <Menubar>
       <MenubarMenu>
-        <MenubarTrigger asChild className="bg-neutral-500 rounded-md p-2">
-          <Link to="/">Home</Link>
+        <MenubarTrigger asChild>
+          <NavLink to="/" className={linkClass}>
+            Home
+          </NavLink>
         </MenubarTrigger>
       </MenubarMenu>
       <MenubarMenu>
-        <MenubarTrigger asChild className="bg-neutral-500   rounded-md p-2">
-          <Link to="/search">Search</Link>
+        <MenubarTrigger asChild>
+          <NavLink to="/search" className={linkClass}>
+            Search
+          </NavLink>
         </MenubarTrigger>
       </MenubarMenu>
     </Menubar>
