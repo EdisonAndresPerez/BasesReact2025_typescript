@@ -3,13 +3,20 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import CustomJumbotron from "@/components/custom/CustomJumbotron";
 import StatsVideoGames from "@/videojuegos/components/StatsVideoGames";
 import VideoJuegoGrid from "@/videojuegos/components/VideoJuegoGrid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomPagination from "@/components/custom/CustomPagination";
+import { getVideoJuegosByPage } from "@/videojuegos/actions/get-videojuegos-by-page.actions";
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState<
     "all" | "favorites" | "action" | "rpg"
   >("all");
+
+  useEffect(() => {
+    getVideoJuegosByPage().then((games) => {
+      console.log(games);
+    });
+  }, []);
 
   return (
     <>
@@ -22,8 +29,6 @@ export const HomePage = () => {
 
         {/* Stats Dashboard */}
         <StatsVideoGames />
-
- 
 
         {/* Tabs */}
         <Tabs value={activeTab} className="mb-8">
