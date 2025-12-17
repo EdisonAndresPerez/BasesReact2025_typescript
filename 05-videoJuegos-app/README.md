@@ -16,3 +16,17 @@ Y todo lo relacionado al diseño de la aplicación
 
 los tabs y la pagination siempre se hacen en componente que vayamos a utilizar en otros lados
 
+
+
+------------------------------------------------------
+
+En esta sección nos enfocaremos en trabajar con las funcionalidades de nuestra aplicación, pero también quiero enseñarles a depender menos del useState y useEffect para que su aplicación funcione, puntualmente veremos:
+
+TanStack Query
+QueryParameters
+Caché
+Custom Hooks especializados
+Paginaciones por categorías
+Mucho más
+
+

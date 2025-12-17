@@ -5,7 +5,6 @@ import StatsVideoGames from "@/videojuegos/components/StatsVideoGames";
 import VideoJuegoGrid from "@/videojuegos/components/VideoJuegoGrid";
 import { useState } from "react";
 import CustomPagination from "@/components/custom/CustomPagination";
-import CustomBreadcrumbs from "@/components/custom/CustomBreadcrumbs";
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState<
@@ -24,9 +23,7 @@ export const HomePage = () => {
         {/* Stats Dashboard */}
         <StatsVideoGames />
 
-        <div className="bg-yellow-300">
-          <CustomBreadcrumbs />
-        </div>
+ 
 
         {/* Tabs */}
         <Tabs value={activeTab} className="mb-8">
