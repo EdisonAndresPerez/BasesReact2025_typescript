@@ -3,20 +3,36 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import CustomJumbotron from "@/components/custom/CustomJumbotron";
 import StatsVideoGames from "@/videojuegos/components/StatsVideoGames";
 import VideoJuegoGrid from "@/videojuegos/components/VideoJuegoGrid";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import CustomPagination from "@/components/custom/CustomPagination";
-import { getVideoJuegosByPage } from "@/videojuegos/actions/get-videojuegos-by-page.actions";
+import { getVideoJuegosByPageAction } from "@/videojuegos/actions/get-videojuegos-by-page.actions";
+import { useQuery } from "@tanstack/react-query";
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState<
     "all" | "favorites" | "action" | "rpg"
   >("all");
 
-  useEffect(() => {
-    getVideoJuegosByPage().then((games) => {
-      console.log(games);
-    });
-  }, []);
+
+const {data} = useQuery({
+  queryKey: ['videojuegos-page'],
+  queryFn: () => getVideoJuegosByPageAction(),
+  staleTime: 1000 * 60 * 5
+})
+
+
+
+  //esta peticion htpp tiene muchos problemas y muchas deficiencias
+  //como por ejemplo tareas asincronas y demas
+
+  //OJO, SIEMPRE QUE NUESTRA APLICACION VA AL SERVIDOR Y REGRESA DATOS
+  //TENEMOS QUE PONER NUESTRA APLICACION EN UN ESTADO DE LOADING 
+
+  //MANEJAR ERROR => CATCH
+ 
+ // useEffect(() => {
+ //   getVideoJuegosByPage().then();
+ // }, []);
 
   return (
     <>
