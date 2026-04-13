@@ -62,7 +62,15 @@ const cantidad = 2;
 const precioUnitario = 100000;
 const ciudadCompra = "Ibague";
 
-const mensajeCompra = `El cliente compro ${cantidad} unidades de ${producto}. a un precio unitario de ${precioUnitario}
-En la ciudad de ${ciudadCompra}. El precio total es: ${cantidad * precioUnitario} 
-El subtotal es: ${cantidad * precioUnitario}`
+const mensajeCompra = `
+Producto:   ${producto}
+Cantidad:   ${cantidad}
+P. Unitario: $${precioUnitario}
+--------------------------
+Subtotal:   $${cantidad * precioUnitario}
+IVA (19%):  $${cantidad * precioUnitario * 0.19}
+Total:      $${cantidad * precioUnitario + (cantidad * precioUnitario * 0.19)}
+Ciudad:     ${ciudadCompra}
+`
+
 console.log(mensajeCompra)
