@@ -2,8 +2,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 //import "./bases/01-const-let.ts";
-import  './bases/02-template-string.ts'
-//import  './bases/03-object-literal.ts'
+//import  './bases/02-template-string.ts'
+import  './bases/03-object-literal.ts'
 //import  './bases/04-arrays'
 //import  './bases/05-functions'
 //import './bases/06-obj-desestructuring'
