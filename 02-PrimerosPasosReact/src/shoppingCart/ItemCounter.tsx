@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-interface Props {
+interface PropsItemCounter {
   name: string;
   quantity?: number;
   availableQuantity: number;
@@ -12,7 +12,7 @@ export default function ItemCounter({
   quantity,
   availableQuantity,
   isActive,
-}: Props) {
+}: PropsItemCounter) {
 
   const [count, setCount] = useState(5)
 
